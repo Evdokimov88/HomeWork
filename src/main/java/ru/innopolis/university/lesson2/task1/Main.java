@@ -4,8 +4,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world");
         Object obj = null;
-/*if(obj.equals("qu qu na"))
-System.out.println("Hello world");*/
+//Для проверки нужно раскоментить строки
+    /*if(obj.equals("qu qu na"))
+    System.out.println("Hello world");*/
         int[] array = {3, 5, 2, -87, 92};
 //array[6]=10;
         try{
