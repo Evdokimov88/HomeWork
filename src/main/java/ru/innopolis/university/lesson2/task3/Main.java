@@ -14,6 +14,18 @@ class Person {
 
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -28,12 +40,13 @@ enum Sex {
     MAN,
     WOMAN;
 
-//Создаем из перечеслений неизменяемый список
+    //Создаем из перечеслений неизменяемый список
     private static final List<Sex> value =
             Collections.unmodifiableList(Arrays.asList(values()));
 
     private static final Random random = new Random();
-//Выбираем случайный элемент списка
+
+    //Выбираем случайный элемент списка
     public static Sex randomSex() {
         return value.get(random.nextInt(value.size()));
     }
@@ -42,10 +55,7 @@ enum Sex {
 public class Main {
     public static void main(String[] args) {
         Person[] person = new Person[10000];
-        List<Integer> personList = new ArrayList<Integer>();
-        int[] age = new int[person.length];
         for (int i = 0; i < person.length; i++) {
-
             String alfabet = "ABCDE";
             StringBuilder name = new StringBuilder(5);/*Создаем обьект имя,
             который будет состоять из символов alfabet*/
@@ -59,38 +69,22 @@ public class Main {
             //присваиваем полям person значения
             person[i] = new Person(((int) (100 * Math.random())), Sex.randomSex(), name.toString());
             System.out.println(person[i].toString());
+        }
 
+        int index;
+        Person temp;
+        for (int a = 0; a < person.length - 1; a++) {
+            index = a;
+            for (int b = a + 1; b < person.length; b++)
+                if (person[b].getAge() > person[index].getAge())
+                    index = b;
+            temp = person[a];
+            person[a] = person[index];
+            person[index] = temp;
 
         }
-        arraysorted(age);
-for(int i = 0; i<person.length; i++)
-
-            System.out.println(age);
-
-        }
-    private static void arraysorted(int[] mas){
-        boolean isSorted = false;
-        int buf;
-        while(!isSorted) {
-            isSorted = true;
-            for (int i = 0; i < mas.length-1; i++) {
-                if(mas[i] > mas[i+1]){
-                    isSorted = false;
-
-                    buf = mas[i];
-                    mas[i] = mas[i+1];
-                    mas[i+1] = buf;
-                }
-            }
-        }
+        for (Person value : person)
+            System.out.println(value.toString());
     }
-
-    }
-
-
-class ArrayBubble{
-
-
-
-
 }
+
