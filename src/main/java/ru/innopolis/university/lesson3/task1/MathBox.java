@@ -7,11 +7,11 @@ import java.util.Objects;
 
 
 public class MathBox<T extends Number> {
-    List<Number> arrList = new ArrayList<>();
+    List<Number> arrList;
     private int hashCode;
 
     MathBox(T[] number) {
-        this.arrList = Arrays.asList(number);
+        this.arrList =new ArrayList(Arrays.asList(number));
     }
 
      public double summator() {
@@ -32,17 +32,11 @@ public class MathBox<T extends Number> {
         }
     }
 
-    public void delInteger(Integer integer) {
-        arrList.remove(integer);
+    public void delInteger(Integer k) {
+        arrList.removeIf(number -> number.equals(k.doubleValue()));
+
 }
 
-    public List<Number> getArrList() {
-        return arrList;
-    }
-
-    public void setArrList(List<Number> arrList) {
-        this.arrList = arrList;
-    }
 
     @Override
     public String toString() {
