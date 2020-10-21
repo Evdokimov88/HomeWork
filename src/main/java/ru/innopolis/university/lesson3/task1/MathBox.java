@@ -14,7 +14,7 @@ public class MathBox<T extends Number> {
         this.arrList =new ArrayList(Arrays.asList(number));
     }
 
-     public double summator() {
+    public double summator() {
         double sum = 0;
         for (int i = 0; i < arrList.size(); i++) {
             sum = arrList.get(i).doubleValue() + sum;
@@ -35,7 +35,7 @@ public class MathBox<T extends Number> {
     public void delInteger(Integer k) {
         arrList.removeIf(number -> number.equals(k.doubleValue()));
 
-}
+    }
 
 
     @Override
@@ -58,4 +58,3 @@ public class MathBox<T extends Number> {
         return Objects.hash(arrList, hashCode);
     }
 }
-

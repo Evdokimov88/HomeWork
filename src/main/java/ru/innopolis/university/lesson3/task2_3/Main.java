@@ -1,6 +1,7 @@
-package ru.innopolis.university.lesson3.task1;
+package ru.innopolis.university.lesson3.task2_3;
 
 /*Задание 1. Написать класс MathBox, реализующий следующий функционал:
+
 Конструктор на вход получает массив Number. Элементы не могут повторяться. Элементы массива внутри объекта
 раскладываются в подходящую коллекцию (выбрать самостоятельно).
 Существует метод summator, возвращающий сумму всех элементов коллекции.
@@ -12,7 +13,7 @@ package ru.innopolis.university.lesson3.task1;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Number[] number = {160, 2.333f, 62.23, 56.0f, 10930244088L, 120478, 100};
         Number[] number1 = {160, 2.333f, 62.23, 56.0f, 10930244088L, 120478, 100};
         MathBox<Number> mathBox = new MathBox<>(number);
@@ -33,6 +34,33 @@ public class Main {
         mathBox.delInteger(16);
         System.out.println(mathBox.toString());
         System.out.println(mathBox.hashCode());
+
+        ObjectBox objectBox = new ObjectBox();
+        Object obj = new Object();
+        Object job = new Object();
+        Object superObj = new Object();
+        Object megaObj = new Object();
+        Object objObj = new Object();
+        Object ququna = new Object();
+
+        objectBox.addObject(obj);
+        objectBox.addObject(job);
+        objectBox.addObject(superObj);
+        objectBox.addObject(megaObj);
+        objectBox.addObject(objObj);
+        objectBox.addObject(ququna);
+        System.out.println();
+        objectBox.dump();
+        objectBox.deleteObject(megaObj);
+        objectBox.dump();
+        System.out.println();
+
+        mathBox.addObject(12);
+        mathBox.addObject(2);
+        mathBox.dump();
+
     }
 
 }
+
+
