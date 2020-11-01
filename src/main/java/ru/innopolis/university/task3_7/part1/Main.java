@@ -1,4 +1,4 @@
-package ru.innopolis.university.task3_7;
+package ru.innopolis.university.task3_7.part1;
 
 
 import java.io.*;
