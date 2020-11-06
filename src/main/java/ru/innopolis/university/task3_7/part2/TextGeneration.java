@@ -1,16 +1,14 @@
 package ru.innopolis.university.task3_7.part2;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class TextGeneration {
-    static List<String> sentence = new ArrayList<>();
     static String alfabet = "abcdefghijklmnopqsrtuvwxyz";
     static String alfaUp = alfabet.toUpperCase();
-    static String znaki = ".!?,";
+    static String znaki = ".!?";
     static String space = " ";
-
+//генерим первое слово с заглавной буква
     public static String firsWordGen() {
         Random random = new Random();
         char[] str = new char[15];
@@ -21,7 +19,7 @@ public class TextGeneration {
         }
         return new String(str);
     }
-
+//генерим слово
     public static String wordGen() {
         Random random = new Random();
         char[] str = new char[15];
@@ -30,12 +28,12 @@ public class TextGeneration {
         }
         return new String(str);
     }
-
+//генерим знак припянания
     public static String markGen() {
         int index = (int) (Math.random() * 3);
         return String.valueOf(znaki.charAt(index));
     }
-
+//генерим предложение
     public static String sentenceGen(String fisrtWord, List<String> wordList, String mark) {
         StringBuilder sentence = new StringBuilder();
 
@@ -49,20 +47,29 @@ public class TextGeneration {
         }
         return fisrtWord + " " + sentence + mark + " ";
     }
-
+//генерим абзац
     public static String paragrapfGen(List<String> sentence) {
         StringBuilder para = new StringBuilder();
         for (String s : sentence) {
             para.append(s);
         }
-        return para.toString()+"\n\t";
+        return para.toString();
     }
+//генерим текст
     public static String textGen(List<String> paragrapg) {
-        StringBuilder para = new StringBuilder();
+        StringBuilder text = new StringBuilder();
         for (String s : paragrapg) {
-            para.append(s);
+            text.append(s).append("\r\n");
         }
-        return para.toString()+"\n\t";
+        return text.toString();
+    }
+//генерим массив слов от 0 до 1000
+    public static String[] words() {
+        String[] words = new String[(int)(1+(Math.random() * 1000))];
+        for (int i=0; i<words.length;i++){
+            words[i]=wordGen();
+        }
+        return words;
     }
 
 }
