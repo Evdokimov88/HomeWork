@@ -41,7 +41,7 @@ public class NewThread{
             BigInteger res;
             System.out.println("Running t3 ");
             res = fact1.multiply(fact2);
-            System.out.println(res);
+            System.out.println("факториал числа "+arr+" равен:\n"+res);
         }
     };
 
