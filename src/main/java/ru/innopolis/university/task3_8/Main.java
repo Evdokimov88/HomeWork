@@ -5,9 +5,8 @@ public class Main{
     public static void main(String[] args) throws InterruptedException {
         int[] array = new int[(int) (Math.random() * 100)];
         for (int j = 0; j < array.length; j++) {
-            array[j] = (int) (Math.random() * 10);
-
-            NewThread thread = new NewThread("main", array[j]);
+            array[j] = (int) (Math.random() * 100);
+            NewThread thread = new NewThread(array[j]);
             thread.t1.start();
             thread.t2.start();
             thread.t1.join();

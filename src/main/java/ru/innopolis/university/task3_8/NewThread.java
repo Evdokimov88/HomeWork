@@ -3,17 +3,17 @@ package ru.innopolis.university.task3_8;
 import java.math.BigInteger;
 
 public class NewThread{
-    private String name;
-    Thread thread;
+
     int arr;
     BigInteger fact1;
     BigInteger fact2;
 
 
-    public NewThread(String name, int arr) {
-        this.name = name;
+    public NewThread(int arr) {
+
         this.arr=arr;
-        System.out.println("New thread " + thread);
+
+
     }
 
 
