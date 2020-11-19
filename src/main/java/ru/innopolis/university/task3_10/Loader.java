@@ -9,7 +9,8 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class Loader extends ClassLoader {
-    public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException,
+            IllegalAccessException, InstantiationException {
 //Создаем SomeClass.java
         createSomeClass();
 //Компилируем в SomeClass.class
@@ -17,10 +18,8 @@ public class Loader extends ClassLoader {
         compiler.run(null, null, null, "SomeClass.java");
         final Class someClass = loadSimpleClass();
         analizeClass(someClass);
-        Method doWork = someClass.getMethod("doWork");
-        doWork.setAccessible(true);
-        doWork.invoke(someClass);
     }
+
 
     /**
      * Данный метод создает файл SomeClass.java и записывает в него логику метода doWork();
@@ -51,14 +50,16 @@ public class Loader extends ClassLoader {
      *
      * @param clazz
      */
-    private static void analizeClass(Class clazz){
+    private static void analizeClass(Class clazz) throws InvocationTargetException, IllegalAccessException, InstantiationException {
         System.out.println("Описанные в классе методы");
 
         for (Method declaredMethod : clazz.getDeclaredMethods()) {
             System.out.println("Имя метода: " + declaredMethod.getName());
             System.out.println("Тип результата: " + declaredMethod.getReturnType());
+            System.out.println("Выполняем метод " + declaredMethod.getName());
+            declaredMethod.invoke(clazz.newInstance());
         }
-      }
+    }
 
     /**
      * Метод загружает класс SomeClass с помощью myClassLoader
@@ -68,7 +69,7 @@ public class Loader extends ClassLoader {
      */
     private static Class loadSimpleClass() throws ClassNotFoundException {
         MyClassLoader myClassLoader = new MyClassLoader();
-        final Class<?> someClass = Class.forName("SomeClass", true, myClassLoader);
+        Class<?> someClass = Class.forName("SomeClass", true, myClassLoader);
         System.out.println(someClass);
 
         System.out.println("Класслоадер работает " +
