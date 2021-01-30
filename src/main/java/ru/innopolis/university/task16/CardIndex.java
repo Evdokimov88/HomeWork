@@ -1,8 +1,8 @@
-package ru.innopolis.university.task3_5;
+package ru.innopolis.university.task16;
 
 import java.util.*;
 
-public class CardIndex {
+public class CardIndex{
     static Map<Integer, Animal> animals = new TreeMap<>();
     ArrayList<Animal> values = new ArrayList<Animal>(animals.values());
 

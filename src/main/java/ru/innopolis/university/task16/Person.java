@@ -1,4 +1,4 @@
-package ru.innopolis.university.task3_5;
+package ru.innopolis.university.task16;
 
 
 class Person implements Comparable {

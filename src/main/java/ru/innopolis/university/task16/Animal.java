@@ -1,4 +1,4 @@
-package ru.innopolis.university.task3_5;
+package ru.innopolis.university.task16;
 
 
 public class Animal {
@@ -13,6 +13,9 @@ public class Animal {
         this.person = person;
         this.weigth=weigth;
     }
+
+
+
 
     public int getId() {
         return id;
